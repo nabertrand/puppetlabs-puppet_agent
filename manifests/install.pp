@@ -188,7 +188,7 @@ class puppet_agent::install(
       } else {
         $dist_tag = "fc${::operatingsystemmajrelease}"
       }
-    } elsif ($::platform_tag != undef and $::platform_tag =~ /redhatfips.*/) {
+    } elsif ($::puppet_agent::is_pe == true and $::platform_tag != undef and $::platform_tag =~ /redhatfips.*/) {
       # The undef check here is for unit tests that don't supply this fact.
       $dist_tag = 'redhatfips7'
     } elsif $::operatingsystem == 'Amazon' {
