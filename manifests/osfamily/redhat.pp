@@ -114,7 +114,7 @@ class puppet_agent::osfamily::redhat(
     yumrepo { 'pc_repo':
       baseurl             => $source,
       descr               => "Puppet Labs ${pa_collection} Repository",
-      enabled             => true,
+      enabled             => $::puppet_agent::enable_repo,
       gpgcheck            => '1',
       gpgkey              => "${gpg_keys}",
       proxy               => $_proxy,

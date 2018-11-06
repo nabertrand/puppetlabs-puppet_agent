@@ -58,6 +58,7 @@ class puppet_agent (
   $is_pe                 = $::puppet_agent::params::_is_pe,
   $manage_pki_dir        = true,
   $manage_repo           = true,
+  $enable_repo           = true,
   $package_name          = $::puppet_agent::params::package_name,
   $package_version       = $::puppet_agent::params::package_version,
   $service_names         = $::puppet_agent::params::service_names,
