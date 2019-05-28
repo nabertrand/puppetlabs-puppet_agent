@@ -256,6 +256,18 @@ describe 'puppet_agent' do
             is_expected.to contain_yumrepo('pc_repo').with_proxy('_none_')
           }
         end
+        describe 'specify proxy' do
+          let(:params) {
+            {
+              :manage_repo => true,
+              :package_version => package_version,
+              :repo_proxy   => 'http://proxy.url:8080',
+            }
+          }
+          it {
+            is_expected.to contain_yumrepo('pc_repo').with_proxy('http://proxy.url:8080')
+          }
+        end
         describe 'skip repo if unavailable' do
           let(:params) {
             {

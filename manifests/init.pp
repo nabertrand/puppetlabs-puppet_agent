@@ -65,6 +65,7 @@ class puppet_agent (
   $source                = $::puppet_agent::params::_source,
   $install_dir           = $::puppet_agent::params::install_dir,
   $disable_proxy         = false,
+  $repo_proxy            = undef,
   $install_options       = $::puppet_agent::params::install_options,
   $skip_if_unavailable   = 'absent',
   $msi_move_locked_files = false,

@@ -106,11 +106,17 @@ class puppet_agent::osfamily::redhat(
     logoutput => 'on_failure',
   }
 
-  if getvar('::puppet_agent::manage_repo') == true {
-    $_proxy = getvar('puppet_agent::disable_proxy') ? {
-      true    => '_none_',
-      default => undef,
+  if $::puppet_agent::manage_repo == true {
+    if $::puppet_agent::disable_proxy == true {
+      $_proxy = '_none_'
     }
+    else {
+      $_proxy = $::puppet_agent::repo_proxy ? {
+        String  => $::puppet_agent::repo_proxy,
+        default => undef,
+      }
+    }
+
     yumrepo { 'pc_repo':
       baseurl             => $source,
       descr               => "Puppet Labs ${pa_collection} Repository",
